@@ -1,7 +1,7 @@
 # HW2
 
 For this homework, there are three problems.
-* [Box Text|https://github.com/CMPSC-1500/HW2/blob/master/Problems/Problem%201]
+* [Box Text](https://github.com/CMPSC-1500/HW2/blob/master/Problems/Problem%201)
 * Texting
 * Roman Numerals
 
