@@ -5,19 +5,32 @@ public class Problem2 {
     public static void main(String[] args)
     {
         Scanner scan = new Scanner(System.in);
-        int[] PhoneNumber = new int[7];
+        String PN = scan.nextLine();
+        int PhoneNumber = PN.length();
+        int[] numbers = new int[PhoneNumber];
 
         int x = 0;
-        while(x<7)
+        while(x<PhoneNumber)
         {
-            PhoneNumber[x] = scan.nextInt();
+            numbers[x] = Character.getNumericValue(PN.charAt(x));
             x++;
-        }
+        }//make an array list
 
-        String[] association = {" "," ", "abc","def", "ghi", "jkl", "mno","prs","tuv","wxy"};
-        for(int i = 0; i<PhoneNumber.length; i++)
-        {
-            System.out.println(association[PhoneNumber[i]]);
-        }
+        String[] association = {" "+" "+" "," "+" "+" ", "abc","def", "ghi", "jkl", "mno","prs","tuv","wxy"};
+            for (int i = 0; i < 3; i++) {
+                int z = 0;
+                while (z < PhoneNumber) {
+                    for (int j = 0; j < PhoneNumber; j++) {
+                        if (j == PhoneNumber-1) {
+                            System.out.println(association[numbers[j]].charAt(i));
+                        }
+                        else
+                        {
+                            System.out.print(association[numbers[j]].charAt(i));
+                        }
+                    }
+                    z++;
+                }
+            }
     }
 }
