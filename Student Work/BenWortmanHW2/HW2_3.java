@@ -5,7 +5,8 @@ import java.util.Scanner;
 public class HW2_3
 {
 
-    private static int num(char letter)
+   public static void main(String[] args);
+
     {
         if (letter == 'I')
         {
