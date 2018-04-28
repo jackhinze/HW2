@@ -4,10 +4,12 @@ import java.util.Scanner;
 
 public class HW2_3
 {
-
-   public static void main(String[] args);
-
+    public static void main(String[] args);
     {
+        Scanner sysIn = new Scanner(System.in);
+
+        String letter=sysIn.nextLine();
+        
         if (letter == 'I')
         {
             return 1;
@@ -41,3 +43,5 @@ public class HW2_3
 
     }
 }
+
+
