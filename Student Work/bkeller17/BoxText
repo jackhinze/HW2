@@ -1,0 +1,40 @@
+public class BoxText{
+ 
+public static void main(String[] args){
+
+
+  function longestWord(str) {
+  
+  var strSplit = str.split(' ');
+  var longestWord = 0;
+  
+           for(var i = 0; i < strSplit.length; i++){
+    
+                if(strSplit[i].length > longestWord){
+                longestWord = strSplit[i].length;
+           }
+         
+         // THE INPUT ABOVE WILL SPLIT THE SENTENCE INPUT INTO EACH INDIVIDUAL WORD AND LOCATE THE LONGEST WORD.
+         
+  System.out.println "+", (longestWord + 2) * "-", "+"
+ 
+         // THIS LINE WILL CREATE THE TOP BOUND OF THE BOX BASED ON HOW LONG THE LONGEST WORD IS.
+ 
+  for(int i=0; i<=str.length; i++){
+  
+             System.out.println "| ", input[i], (longestWord.length - str.length[i])*" ", " |"
+             
+         }
+         
+         // THIS LOOP WILL PRINT "| (word)     |" WITH EXTRA SPACE IN ACCORDANCE TO THE LONGEST WORD IN THE SENTENCE.
+ 
+  System.out.println "+", (longestWord + 2) * "-", "+"
+  
+         // THIS LINE WILL GENERATE THE BOTTOM BOUND OF THE BOX, JUST LIKE THE TOP BOUND. 
+  
+  }
+  }
+  }
+  }
+  
+  
