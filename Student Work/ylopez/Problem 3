@@ -1,0 +1,35 @@
+import java.util.Scnner;
+public class ProblemThree {
+    private static int value(char rn)//rn = roman numral
+    {
+        if (rn == 'I') {
+            return 1;
+        }
+        if (rn == 'V') {
+            return 5;
+        }
+        if (rn == 'X') {
+            return 10;
+        }
+        if (rn == 'L') {
+            return 50;
+        }
+        if (rn == 'C') {
+            return 100;
+        }
+        if (rn == 'D') {
+            return 500;
+        }
+        if (rn == 'M') {
+            return 1000;
+        }
+        return -1;
+    }
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter a Roman Numeral");
+        String RomanNumeral = scan.nextLine();
+        System.out.println("The Roman Numeral you entered is " + ProblemThree(RomanNumeral));
+    }
+}
+//I wasn't sure how to continue with this problem besides naming the roman numerals
