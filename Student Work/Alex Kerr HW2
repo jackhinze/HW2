@@ -1,0 +1,359 @@
+import java.util.Scanner;
+import java.io.IOException;
+import java.util.Arrays;
+
+import static java.lang.Integer.*;
+
+public class HW2 {
+    public static void main(String[] args) {
+        //due the 20th but no penalty until the 27th midnight
+        //problem 1
+        Scanner input = new Scanner(System.in);
+
+        String in = input.nextLine();
+        int num = 0;
+        int place = 0;
+        char space = ' ';
+        int a = 1;
+        int longest = 0;
+        String[] list = new String[in.length()];
+        for (int i = 0; i <= in.length() - 1; i++) {
+            if (in.charAt(i) == space) {
+                list[place] = in.substring(num, i);
+                num = i;
+                System.out.println();
+                place++;
+            }
+
+        }
+        list[place] = in.substring(num, in.length());
+        for (int j = 0; j < place; j++) {
+            if (list[j].length() > list[a].length()) {
+                if (longest < list[j].length()) {
+                    longest = list[j].length();
+                }
+                a++;
+            } else if (list[j].length() <= list[a].length()) {
+                if (longest < list[a].length()) {
+                    longest = list[a].length();
+                }
+                a++;
+            }
+        }
+        System.out.print("+");
+        for (int q = 0; q <= longest; q++) {
+            System.out.print("-");
+        }
+        System.out.println("+");
+        System.out.print("| " + list[0]);
+        if (list[0].length() == longest) {
+            System.out.println(" |");
+        } else {
+            for (int e = 0; e <= longest - list[0].length() - 1; e++) {
+                System.out.print(" ");
+            }
+            System.out.println("|");
+        }
+        for (int j = 1; j <= place; j++) {
+            System.out.print("|" + list[j]);
+            if (list[j].length() != longest) {
+                for (int w = 0; w < longest - list[j].length(); w++) {
+                    System.out.print(" ");
+                }
+                System.out.println(" |");
+            } else {
+                System.out.println(" |");
+            }
+        }
+        System.out.print("+");
+        for (int q = 0; q <= longest; q++) {
+            System.out.print("-");
+        }
+        System.out.println("+");
+
+
+        //problem 2
+        String[] textOptions = {"   ","   ","abc", "def", "ghi", "jkl", "mno", "prs", "tuv", "wxy"};
+        int[] phoneNumber = new int[7];
+        System.out.println("Please enter in your text?");
+        String in2 = input.nextLine();
+        String[] numbers = new String[7];
+        for(int b =0; b<7; b++)
+            numbers[b] = in2.substring(b,b+1);
+        for(int c = 0; c<7; c++)
+        System.out.print(numbers[c]);
+
+        for(int i=0; i<7;i++)
+            phoneNumber[i] = Integer.parseInt(numbers[i]);
+
+        for(int t = 0; t<7; t++)
+        System.out.println(phoneNumber[t]);
+
+        int seven = 7;
+
+        String ans = "";
+        for (int aa = 0; aa <= 2; aa++) {
+            if (phoneNumber[0] == 0 || phoneNumber[0] == 1)
+            {
+                aa =2;
+            }
+            ans = "" + textOptions[phoneNumber[0]].charAt(aa);
+                for (int bb = 0; bb <= 2; bb++) {
+                    if (phoneNumber[1] == 0 || phoneNumber[1] == 1)
+                    {
+                        bb =2;
+                    }
+                    ans = ans.substring(0,1) + textOptions[phoneNumber[1]].charAt(bb);
+                    for (int cc = 0; cc <= 2; cc++) {
+                        if (phoneNumber[2] == 0 || phoneNumber[2] == 1)
+                        {
+                            cc =2;
+                        }
+                            ans = ans.substring(0,2) + textOptions[phoneNumber[2]].charAt(cc);
+                            for(int dd = 0; dd <= 2; dd++)
+                            {
+                                if (phoneNumber[3] == 0 || phoneNumber[3] == 1)
+                                {
+                                    dd =2;
+                                }
+                                ans = ans.substring(0,3) + textOptions[phoneNumber[3]].charAt(dd);
+                                for(int ee =0; ee <= 2; ee++)
+                                {
+                                    if (phoneNumber[4] == 0 || phoneNumber[4] == 1)
+                                    {
+                                        ee =2;
+                                    }
+                                    ans = ans.substring(0,4) + textOptions[phoneNumber[4]].charAt(ee);
+                                    for(int ff = 0; ff<=2; ff++)
+                                    {
+                                        if (phoneNumber[5] == 0 || phoneNumber[5] == 1)
+                                        {
+                                            ff =2;
+                                        }
+                                        ans = ans.substring(0,5) + textOptions[phoneNumber[5]].charAt(ff);
+                                        for(int gg = 0; gg<=2; gg++)
+                                        {
+                                            if (phoneNumber[6] == 0 || phoneNumber[6] == 1)
+                                            {
+                                                gg =2;
+                                            }
+                                            ans = ans.substring(0,6) + textOptions[phoneNumber[6]].charAt(gg);
+                                            System.out.println(ans);
+                                        }
+                                    }
+                                }
+                            }
+                    }
+                }
+
+        }
+
+        //Problem 3
+        String Roman = input.nextLine();
+        String[] breakDown = new String[Roman.length()];
+        int error1 = 0;
+        int error2 = 0;
+        int error3 = 0;
+        int error4 = 0;
+        int  length = Roman.length();
+        String[] Numerals = {"I","V","X","L","C","D","M"};
+        for(int zz = 0; zz<Roman.length();zz++)
+        {
+            breakDown[zz] = Roman.substring(zz, zz+1);
+        }
+        for(int yy = 0; yy < Roman.length();yy++)
+        {
+            System.out.println(breakDown[yy]);
+        }
+        //looking if thinks are errors
+        for (int ww = 0;ww<Roman.length(); ww++ ) {
+            //this should make sure if some character is not a roman numeral then it returns false but it returns everything false.
+            /*if (breakDown[ww] != "M" || breakDown[ww] != "D" || breakDown[ww] != "C" || breakDown[ww] != "L" || breakDown[ww] != "X" || breakDown[ww] != "V" || breakDown[ww] != "I") {
+                error1++;
+            }*/
+            if (ww < Roman.length() - 1) {
+                if (breakDown[ww] == "V" && breakDown[ww + 1] == "X") {
+                    error2++;
+                }
+                if (breakDown[ww] == "V" && breakDown[ww + 1] == "L") {
+                    error2++;
+                }
+                if (breakDown[ww] == "V" && breakDown[ww + 1] == "L") {
+                    error2++;
+                }
+                if (breakDown[ww] == "V" && breakDown[ww + 1] == "C") {
+                    error2++;
+                }
+                if (breakDown[ww] == "V" && breakDown[ww + 1] == "D") {
+                    error2++;
+                }
+                if (breakDown[ww] == "V" && breakDown[ww + 1] == "M") {
+                    error2++;
+                }
+                if (breakDown[ww] == "L" && breakDown[ww + 1] == "C") {
+                    error2++;
+                }
+                if (breakDown[ww] == "L" && breakDown[ww + 1] == "D") {
+                    error2++;
+                }
+                if (breakDown[ww] == "L" && breakDown[ww + 1] == "M") {
+                    error2++;
+                }
+                if (breakDown[ww] == "D" && breakDown[ww + 1] == "M") {
+                    error2++;
+                }
+            }
+            if(ww>1)
+            {
+                if(breakDown[ww] == "X" && (breakDown[ww-1] == "V" || breakDown[ww-1] == "I"))
+                {
+                    error3++;
+                }
+                if(breakDown[ww] == "L" && ((breakDown[ww-1] == "V" || breakDown[ww-2] == "I") || (breakDown[ww-1] == "X" && (breakDown[ww-2] == "V" || breakDown[ww-2] == "I"))))
+                {
+                    error3++;
+                }
+                if(breakDown[ww] == "C" && (breakDown[ww-1]=="L" && ((breakDown[ww-2]=="X" || breakDown[ww-2]=="V" || breakDown[ww-2]=="I") || (breakDown[ww-1] =="X" && (breakDown[ww-2]=="V" || breakDown[ww-2] =="I")||(breakDown[ww=1]=="V" && breakDown[ww-2]=="I")) )))
+                {
+                    error3++;
+                }
+                if(breakDown[ww] == "D" && (breakDown[ww-1]=="C" && (breakDown[ww-2]=="L" || breakDown[ww-2]=="X" || breakDown[ww-2]=="V" ||breakDown[ww-2]=="I" )|| ((breakDown[ww-2]=="X" || breakDown[ww-2]=="V" || breakDown[ww-2]=="I") || (breakDown[ww-1] =="X" && (breakDown[ww-2]=="V" || breakDown[ww-2] =="I")||(breakDown[ww=1]=="V" && breakDown[ww-2]=="I")) )))
+                {
+                    error3++;
+                }
+                if(breakDown[ww] == "M" && (breakDown[ww-1]=="D" && (breakDown[ww-2]=="C" || breakDown[ww-2]=="L" || breakDown[ww-2]=="X" || breakDown[ww-2]=="V" || breakDown[ww-2]=="I") || (breakDown[ww-1]=="C" && (breakDown[ww-2]=="L" || breakDown[ww-2]=="X" || breakDown[ww-2]=="V" ||breakDown[ww-2]=="I" )|| ((breakDown[ww-2]=="X" || breakDown[ww-2]=="V" || breakDown[ww-2]=="I") || (breakDown[ww-1] =="X" && (breakDown[ww-2]=="V" || breakDown[ww-2] =="I")||(breakDown[ww=1]=="V" && breakDown[ww-2]=="I")) ))))
+                {
+                    error3++;
+                }
+            }
+        }
+        for(int xx = length; xx>0; xx--) {
+            for (int vv = 0; vv < xx; vv++) {
+                if (breakDown[xx-1] == "M" && ( breakDown[vv] == "D" || breakDown[vv] == "C" || breakDown[vv] == "L" || breakDown[vv] == "X" || breakDown[vv] == "V" || breakDown[vv] == "I" )) {
+                    error4++;
+                }
+                if (breakDown[xx-1] == "D" && ( breakDown[vv] == "C" || breakDown[vv] == "L" || breakDown[vv] == "X" || breakDown[vv] == "V" || breakDown[vv] == "I" )) {
+                    error4++;
+                }
+                if (breakDown[xx-1] == "C" && ( breakDown[vv] == "L" || breakDown[vv] == "X" || breakDown[vv] == "V" || breakDown[vv] == "I" )) {
+                    error4++;
+                }
+                if (breakDown[xx-1] == "L" && ( breakDown[vv] == "X" || breakDown[vv] == "V" || breakDown[vv] == "I" )) {
+                    error4++;
+                }
+                if (breakDown[xx-1] == "X" && ( breakDown[vv] == "V" || breakDown[vv] == "I" )) {
+                    error4++;
+                }
+                if (breakDown[xx-1] == "V" && ( breakDown[vv] == "I" )) {
+                    error4++;
+                }
+            }
+        }
+        if(error1 > 0)
+        {
+            System.out.println("ERROR: Not all charaters are vaild Roman Numerals.");
+        }
+        else if(error2 > 0)
+        {
+            System.out.println("ERROR: Auxiliary symbols are not allowed to be subtracted in Roman Numberals");
+        }
+        else if(error3 > 0)
+        {
+            System.out.println("ERROR: Subtration of consecutive characters is not allowed");
+        }
+        else if( error4 > 0)
+        {
+            System.out.println("ERROR: The value of symbols to be added must not increase as we work trough the Roman Numberal");
+        }
+        else
+        {
+            System.out.println(Value(Roman,breakDown));
+        }
+    }
+    private static int Value(String Roman,String[] breakDown)
+    {
+        int ans =0;
+        for(int aa= Roman.length(); aa>0;aa--) {
+           //Have it all correct but when it should return both statements true it returns a false and does not add to the answer.
+            if(breakDown[aa-1] == "I" && (breakDown[aa-2] =="I" || breakDown[aa-2]=="V" || breakDown[aa-2]=="X" || breakDown[aa-2]=="L" || breakDown[aa-2]=="C" || breakDown[aa-2]=="D" || breakDown[aa-2]=="M"))
+            {
+                ans =ans +1;
+            }
+            if(breakDown[aa-1]=="V" && (breakDown[aa-2]=="V" || breakDown[aa-2]=="X" || breakDown[aa-2]=="L" || breakDown[aa-2]=="C" || breakDown[aa-2]=="D" || breakDown[aa-2]=="M"))
+            {
+                ans = ans +5;
+            }
+            if(breakDown[aa-1]=="V" && breakDown[aa-2]=="I")
+            {
+                ans =ans+4;
+            }
+            if(breakDown[aa-1]=="X" && (breakDown[aa-2]=="X" || breakDown[aa-2]=="L" || breakDown[aa-2]=="C" || breakDown[aa-2]=="D" || breakDown[aa-2]=="M"))
+            {
+                ans = ans+10;
+            }
+            if(breakDown[aa-1]=="X" && breakDown[aa-2]=="I")
+            {
+                ans = ans +9;
+            }
+            if(breakDown[aa-1]=="L" && (breakDown[aa-2]=="L" || breakDown[aa-2]=="C" || breakDown[aa-2]=="D" || breakDown[aa-2]=="M"))
+            {
+                ans =ans + 50;
+            }
+            if(breakDown[aa-1]=="L" && breakDown[aa-2]=="X")
+            {
+                ans = ans + 40;
+            }
+            if(breakDown[aa-1]=="L" && breakDown[aa-2]=="I")
+            {
+                ans =ans + 49;
+            }
+            if(breakDown[aa-1]=="C" && (breakDown[aa-2]=="C" || breakDown[aa-2]=="D" || breakDown[aa-2]=="M"))
+            {
+                ans = ans + 100;
+            }
+            if(breakDown[aa-1]=="C" && breakDown[aa-2]=="X")
+            {
+                ans = ans + 90;
+            }
+            if(breakDown[aa-1]=="C" && breakDown[aa-2]=="I")
+            {
+                ans = ans + 99;
+            }
+            if(breakDown[aa-1]=="D"&&(breakDown[aa-2]=="D" || breakDown[aa-2]=="M"))
+            {
+                ans = ans + 500;
+            }
+            if(breakDown[aa-1] == "D" && breakDown[aa-2]=="C")
+            {
+                ans = ans + 400;
+            }
+            if(breakDown[aa-1] =="D" && breakDown[aa-2]=="X")
+            {
+                ans = ans + 490;
+            }
+            if(breakDown[aa-1]=="D" && breakDown[aa-2]=="I")
+            {
+                ans = ans + 499;
+            }
+            if(breakDown[aa-1]=="M" && breakDown[aa-2]=="M")
+            {
+                ans = ans + 1000;
+            }
+            if(breakDown[aa-1]=="M" && breakDown[aa-2]=="C")
+            {
+                ans = ans + 900;
+            }
+            if(breakDown[aa-1]=="M" && breakDown[aa-2]=="X")
+            {
+                ans = ans + 990;
+            }
+            if(breakDown[aa-1]=="M" && breakDown[aa-2]=="I")
+            {
+                ans = ans + 999;
+            }
+        }
+        System.out.println(ans);
+        return ans;
+    }
+
+    }
