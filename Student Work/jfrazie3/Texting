@@ -1,0 +1,91 @@
+import javax.swing.JOptionPane;
+
+public class Texting2 {
+
+	public static void main(String[] args) {
+		String user = JOptionPane.showInputDialog("Enter Phone Numner");
+		char check;
+		String[] letters;
+		letters = new String[7];
+		for (int count = 0; count < 7; count++) {
+			check = user.charAt(count);
+			switch (check) {
+			case '0':
+				letters[count] = "   ";
+				break;
+			case '1':
+				letters[count] = "   ";
+				break;
+			case '2':
+				letters[count] = "abc";
+				break;
+			case '3':
+				letters[count] = "def";
+				break;
+			case '4':
+				letters[count] = "ghi";
+				break;
+			case '5':
+				letters[count] = "jkl";
+				break;
+			case '6':
+				letters[count] = "mno";
+				break;
+			case '7':
+				letters[count] = "prs";
+				break;
+			case '8':
+				letters[count] = "tuv";
+				break;
+			case '9':
+				letters[count] = "wxy";
+				break;
+			}
+		}
+		String[] allResults;
+		allResults = new String[8000];
+
+		for (int counterTo2187 = 0; counterTo2187 < 2187; counterTo2187++) {
+			int counterTo7 = 0;
+			allResults[counterTo2187] = Character.toString(letters[counterTo7].charAt(counterTo2187 % 2187 / 729));
+			counterTo7++;
+
+			allResults[counterTo2187] = allResults[counterTo2187]
+					+ Character.toString(letters[counterTo7].charAt(counterTo2187 % 729 / 243));
+			counterTo7++;
+
+			allResults[counterTo2187] = allResults[counterTo2187]
+					+ Character.toString(letters[counterTo7].charAt(counterTo2187 % 243 / 81));
+			counterTo7++;
+
+			allResults[counterTo2187] = allResults[counterTo2187]
+					+ Character.toString(letters[counterTo7].charAt(counterTo2187 % 81 / 27));
+			counterTo7++;
+
+			allResults[counterTo2187] = allResults[counterTo2187]
+					+ Character.toString(letters[counterTo7].charAt(counterTo2187 % 27 / 9));
+			counterTo7++;
+
+			allResults[counterTo2187] = allResults[counterTo2187]
+					+ Character.toString(letters[counterTo7].charAt(counterTo2187 % 9 / 3));
+			counterTo7++;
+
+			allResults[counterTo2187] = allResults[counterTo2187]
+					+ Character.toString(letters[counterTo7].charAt(counterTo2187 % 3));
+
+		}
+		
+		for (int num = 0; num < 2187; num++) {
+			int banana=0;
+			for( int mun=num+1; mun<2187; mun++) {
+				if(allResults[num].equals(allResults[mun])) {
+					banana++;
+				}
+			}
+			if (banana==0) {
+			System.out.println(allResults[num]);}
+			
+		}
+	
+	}
+}
