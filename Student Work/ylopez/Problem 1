@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class ProblemOne {
+
+    public static void main(String[]args)
+    {
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Enter the sentence");
+        String sentence = input.nextLine();
+
+        showWords(sentence);
+    }
+
+    public static void showWords(String sentence)
+    {
+        String[] words = sentence.split(" ");
+        System.out.println("+--------------+");
+        for(String word : words)
+        {
+            System.out.print("|");
+            System.out.println(word + " |");
+        }
+        System.out.println("+--------------+");
+    }
+}
+
+//When I run the code, the right side of my box is not actually a straight line. I understand what the process of getting that
+//to work is, but I am unsure how to code that. Basically, depending on the number of characters in the word and however long
+//the top/bottom of the box, you take that length - the number of characters = number of spaces needed to make the box look
+//like a real box
