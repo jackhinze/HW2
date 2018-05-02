@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+public class Problem1 {
+    public static void main(String[] args){
+
+        Scanner pull = new Scanner(System.in);
+        String sentence = pull.nextLine();
+        String[] stringArray = sentence.split(" ");
+
+        int longestString = 0;
+        for (int i = 0; i< stringArray.length; i++){
+            if (stringArray[i].length() > longestString)
+                longestString = stringArray[i].length();
+        }
+
+        System.out.println(makeTopBottom(longestString));
+
+        for(int j = 0; j<stringArray.length; j++){
+            System.out.print("| ");
+            for(int k = stringArray[j].length();k <= longestString; k++){
+                stringArray[j] = stringArray[j] + " ";
+
+            }
+            System.out.println(stringArray[j] + "|");
+
+        }
+
+        System.out.println(makeTopBottom(longestString));
+
+    }
+
+    public static String makeTopBottom(int longestString) {
+        String topBottom = "+";
+        for(int i = 0;i <= longestString + 2;i++) {
+            topBottom = topBottom + "-";
+        }
+        topBottom = topBottom + "+";
+        return topBottom;
+    }
+}
